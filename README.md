@@ -3,7 +3,7 @@
 ![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)
 [![license](https://img.shields.io/badge/License-MIT-pink)](LICENSE)
 
-A simple display module for displaying scalar, vector, and matrix floating point values
+A simple display 📺 module for displaying scalar, vector, and matrix floating point values
 on the screen in a general, formatted manner, often used for debugging code or syntax demonstration.
 
 ## Usage
@@ -32,6 +32,7 @@ program example_display
     integer :: i
 
     call display(1.0, '1.0:')
+    call display(1.0, '1.0:', format='sp,f10.3', unit=6) ! default format is 'es10.3'
     call display([real ::(i, i=1, 10)], '1:10:')
     call display([real ::(i, i=1, 10)], header='1:10:', brief=.false.)
     call display(reshape([real ::(i, i=1, 25)], [5, 5]), '5x5:')
@@ -41,6 +42,8 @@ program example_display
 end program example_display
 ! [scalar] 1.0:
 !  1.000E+00
+! [scalar] 1.0:
+!     +1.000
 ! [vector: 10] 1:10:
 !  1.000E+00,  2.000E+00,  3.000E+00, ...  1.000E+01
 ! [vector: 10] 1:10:
