@@ -32,6 +32,7 @@ program example_display
     integer :: i
 
     call display(1.0, '1.0:')
+    call display(1.0, '1.0:', inline=.true.) ! inline output only for scalar
     call display(1.0, '1.0:', format='sp,f10.3', unit=6) ! default format is 'es10.3'
     call display([real ::(i, i=1, 10)], '1:10:')
     call display([real ::(i, i=1, 10)], header='1:10:', brief=.false.)
@@ -42,6 +43,7 @@ program example_display
 end program example_display
 ! [scalar] 1.0:
 !  1.000E+00
+! [scalar] 1.0: 1.000E+00
 ! [scalar] 1.0:
 !     +1.000
 ! [vector: 10] 1:10:

@@ -33,13 +33,14 @@ module display_module
 contains
 
     !> Output floating point scalar on screen
-    subroutine display_0d(re, header, brief, format, unit)
+    subroutine display_0d(re, header, brief, format, unit, inline)
         real(rk), intent(in) :: re  !! scalar
         character(*), intent(in), optional :: header  !! header string
         logical, intent(in), optional :: brief  !! brief output, default is `.true.`
         character(*), intent(in), optional :: format  !! format string, default is `es10.3`
         integer, intent(in), optional :: unit  !! output unit, default is `output_unit`
-        logical :: brief_
+        logical, intent(in), optional :: inline  !! inline output, default is `.false.`
+        logical :: brief_, inline_
         character(:), allocatable :: str
         character(:), allocatable :: format_
         integer :: unit_
@@ -56,6 +57,12 @@ contains
             brief_ = .true.
         end if
 
+        if (present(inline)) then
+            inline_ = inline
+        else
+            inline_ = .false.
+        end if
+
         if (present(header)) then
             str = header
         else
@@ -68,8 +75,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//nl
-        str = str//to_string(re, format_)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re, format_)
 
         write (unit_, '(a)') str
 
