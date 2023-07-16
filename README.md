@@ -3,13 +3,13 @@
 ![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)
 [![license](https://img.shields.io/badge/License-MIT-pink)](LICENSE)
 
-A simple display 📺 module for displaying scalar, vector, and matrix floating point values
+A simple display 📺 module for displaying scalar, vector, and matrix floating-point, integer, logical, and string values
 on the screen in a general, formatted manner, often used for debugging code or syntax demonstration.
 
 ## Usage
 
 Only FPM is supported, other build systems can copy source files (`./src/display.F90`) directly,
-and `ifort` and `gfortran` compilers are tested.
+and `ifort/ifx` and `gfortran` compilers are tested.
 
 To use `display` within your `fpm` project, add the following lines to your `fpm.toml` file:
 
@@ -25,7 +25,7 @@ display = { git="https://github.com/zoziha/display" }
 ```
 
 ```fortran
-program example_display
+program example_display_real
 
     use display_module, only: display
     implicit none
@@ -40,10 +40,10 @@ program example_display
     call display(reshape([real ::(i, i=1, 36)], [6, 6]), '6x6:', .true.)
     call display(reshape([real ::(i, i=1, -35, -1)], [6, 6]), '6x6:', .false.)
 
-end program example_display
+end program example_display_real
 ! [scalar] 1.0:
 !  1.000E+00
-! [scalar] 1.0: 1.000E+00
+! [scalar] 1.0:  1.000E+00
 ! [scalar] 1.0:
 !     +1.000
 ! [vector: 10] 1:10:

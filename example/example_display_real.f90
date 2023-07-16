@@ -1,4 +1,4 @@
-program example_display
+program example_display_real
 
     use display_module, only: display
     implicit none
@@ -13,10 +13,10 @@ program example_display
     call display(reshape([real ::(i, i=1, 36)], [6, 6]), '6x6:', .true.)
     call display(reshape([real ::(i, i=1, -35, -1)], [6, 6]), '6x6:', .false.)
 
-end program example_display
+end program example_display_real
 ! [scalar] 1.0:
 !  1.000E+00
-! [scalar] 1.0: 1.000E+00
+! [scalar] 1.0:  1.000E+00
 ! [scalar] 1.0:
 !     +1.000
 ! [vector: 10] 1:10:
