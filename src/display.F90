@@ -79,7 +79,11 @@ contains
         end if
 
         if (present(header)) then
-            str = header
+            if (inline_) then
+                str = header//' '
+            else
+                str = header
+            end if
         else
             str = ''
         end if
@@ -90,7 +94,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//merge(" ", nl, inline_)//to_string(re, format_)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re, format_)
 
         write (unit_, '(a)') str
 
@@ -128,7 +133,11 @@ contains
         end if
 
         if (present(header)) then
-            str = header
+            if (inline_) then
+                str = header//' '
+            else
+                str = header
+            end if
         else
             str = ''
         end if
@@ -139,7 +148,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//merge(" ", nl, inline_)//to_string(re, format_)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re, format_)
 
         write (unit_, '(a)') str
 
@@ -169,7 +179,11 @@ contains
         end if
 
         if (present(header)) then
-            str = header
+            if (inline_) then
+                str = header//' '
+            else
+                str = header
+            end if
         else
             str = ''
         end if
@@ -180,7 +194,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//merge(" ", nl, inline_)//to_string(re)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re)
 
         write (unit_, '(a)') str
 
@@ -210,7 +225,11 @@ contains
         end if
 
         if (present(header)) then
-            str = header
+            if (inline_) then
+                str = header//' '
+            else
+                str = header
+            end if
         else
             str = ''
         end if
@@ -221,7 +240,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//merge(" ", nl, inline_)//to_string(re)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re)
 
         write (unit_, '(a)') str
 
@@ -259,7 +279,11 @@ contains
         end if
 
         if (present(header)) then
-            str = header
+            if (inline_) then
+                str = header//' '
+            else
+                str = header
+            end if
         else
             str = ''
         end if
@@ -270,7 +294,8 @@ contains
             unit_ = output_unit
         end if
 
-        str = '[scalar] '//str//merge(" ", nl, inline_)//to_string(re, format_)
+        if (.not.inline_) str = str//nl
+        str = '[scalar] '//str//to_string(re, format_)
 
         write (unit_, '(a)') str
 

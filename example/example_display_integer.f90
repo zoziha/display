@@ -4,6 +4,8 @@ program example_display_integer
     implicit none
     integer :: i
 
+    call display(2)
+    call display(2, inline=.true.)
     call display(1, '1:')
     call display(1, '1:', inline=.true.) ! inline output only for scalar
     call display(1, '1:', format='sp,i0', unit=6) ! default format is 'i0'
