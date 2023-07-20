@@ -28,7 +28,6 @@ module display_module
         module procedure :: to_string_real_kind
         module procedure :: to_string_integer_kind
         module procedure :: to_string_logical_kind
-        module procedure :: to_string_character_kind
         module procedure :: to_string_complex_kind
     end interface to_string
 
@@ -241,7 +240,7 @@ contains
         end if
 
         if (.not.inline_) str = str//nl
-        str = '[scalar] '//str//to_string(re)
+        str = '[scalar] '//str//re
 
         write (unit_, '(a)') str
 
@@ -836,12 +835,12 @@ contains
         integer :: i
 
         if (brief .and. size(x) > 5) then
-            string = string//to_string(x(1))//', '//to_string(x(2))//', '// &
-                     to_string(x(3))//', ... '//to_string(x(size(x)))
+            string = string//x(1)//', '//x(2)//', '// &
+                     x(3)//', ... '//x(size(x))
         else
-            string = string//to_string(x(1))
+            string = string//x(1)
             do i = 2, size(x)
-                string = string//', '//to_string(x(i))
+                string = string//', '//x(i)
             end do
         end if
 
@@ -903,15 +902,6 @@ contains
         end if
 
     end function to_string_logical_kind
-
-    !> Private routine: Convert character to string
-    pure function to_string_character_kind(char) result(string)
-        character(*), intent(in) :: char
-        character(len=len(char) + 2) :: string
-
-        string = "'"//char//"'"
-
-    end function to_string_character_kind
 
     !> Private routine: Convert complex to string
     pure function to_string_complex_kind(complex, fmt) result(string)
